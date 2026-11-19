@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icons/icon-192.png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Student Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+
+        <aside class="sidebar">
+            <h2>StudyMate</h2>
+            <div class="backup-buttons">
+                <button id="exportBackup">Export Backup</button>
+                <button id="importBackup">Import Backup</button>
+                <input type="file" id="importFile" accept=".json" hidden>
+            </div>
+            <nav class="main-navigation">
+                <a href="#" class="active">Dashboard</a>
+                <a href="#tasks">My Tasks</a>
+                <a href="#timetable">Study Timetable</a>
+                <a href="#assignments">Assignments</a>
+                <a href="#exams">Examinations</a>
+                <a href="#settings">Settings</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <p>Study smarter. Achieve more.</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <header>
+                <div>
+                    <h1>Welcome to StudyMate!</h1>
+                    <img src="tsappyplan-logo.png" alt="TsappyPlan Logo" class="app-logo">
+                    <p>Your personal student productivity space.</p>
+                </div>
+
+                <div class="profile">Student</div>
+            </header>
+
+            <section class="tasks-section" id="tasks">
+
+                <h2>My Tasks</h2>
+                <p>Add and manage your study activities.</p>
+            
+                <form id="taskForm">
+
+    <h3>Add a New Task</h3>
+
+    <label for="taskInput">Task Name</label>
+    <input
+        type="text"
+        id="taskInput"
+        placeholder="Enter task name"
+        required
+    >
+
+    <label for="taskDate">Due Date</label>
+    <input
+        type="date"
+        id="taskDate"
+        required
+    >
+
+    <label for="taskCategory">Category</label>
+    <select id="taskCategory">
+        <option value="Study">Study</option>
+        <option value="Assignment">Assignment</option>
+        <option value="Revision">Revision</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <button type="submit">Add Task</button>
+
+</form>
+
+
+            
+                <div id="taskList"></div>
+            
+            </section>
+
+            <section class="dashboard-cards">
+
+                    <div class="card">
+                        <h3>My Tasks</h3>
+                        <p id="taskCount">0</p>
+                        <span>Tasks to complete</span>
+                    </div>
+
+                    <div class="card">
+                        <h3>Assignments</h3>
+                        <p id="assignmentCount">0</p>
+                        <span>Upcoming assignments</span>
+                    </div>
+
+                    <div class="card">
+                        <h3>Study Hours</h3>
+                        <p id="studyHours">0</p>
+                        <span>Hours studied</span>
+                    </div>
+
+            </section>
+
+            <section class="tasks-section">
+                <h2>Today's Overview</h2>
+                <p>You have no tasks yet. Start organising your studies!</p>
+            </section>
+
+            <section class="tasks-section" id="timetable">
+
+                <h2>Study Timetable</h2>
+                <p>Organise your weekly study sessions.</p>
+            
+                <form id="timetableForm">
+            
+                    <input
+                        type="text"
+                        id="subjectInput"
+                        placeholder="Subject name"
+                        required
+                    >
+            
+                    <select id="dayInput" required>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
+                    </select>
+            
+                    <input type="time" id="startTime" required>
+            
+                    <input type="time" id="endTime" required>
+            
+                    <input
+                        type="text"
+                        id="locationInput"
+                        placeholder="Location (optional)"
+                    >
+            
+                    <button type="submit">Add Session</button>
+            
+                </form>
+            
+                <div id="timetableList"></div>
+            
+            </section>
+            
+<!-- ASSIGNMENTS SECTION -->
+
+<section class="tasks-section" id="assignments">
+
+    <h2>Assignments</h2>
+    <p>Keep track of your coursework and deadlines.</p>
+
+    <form id="assignmentForm">
+
+        <div class="time-field">
+            <label>Assignment Name</label>
+            <input type="text" id="assignmentName"
+                placeholder="e.g. Marketing Project" required>
+        </div>
+
+        <div class="time-field">
+            <label>Subject</label>
+            <input type="text" id="assignmentSubject"
+                placeholder="e.g. Business Management" required>
+        </div>
+
+        <div class="time-field">
+            <label>Due Date</label>
+            <input type="date" id="assignmentDate" required>
+        </div>
+
+        <div class="time-field">
+            <label>Priority</label>
+            <select id="assignmentPriority">
+                <option value="Low">Low</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
+
+        <button type="submit">Add Assignment</button>
+
+    </form>
+
+    <div id="assignmentList"></div>
+
+</section>
+
+
+<!-- EXAMS SECTION -->
+
+<section class="tasks-section" id="exams">
+
+    <h2>Examination Planner</h2>
+    <p>Never lose track of an upcoming examination.</p>
+
+    <form id="examForm">
+
+        <div class="time-field">
+            <label>Exam Name</label>
+            <input type="text" id="examName"
+                placeholder="e.g. Final Examination" required>
+        </div>
+
+        <div class="time-field">
+            <label>Subject</label>
+            <input type="text" id="examSubject"
+                placeholder="e.g. Accounting" required>
+        </div>
+
+        <div class="time-field">
+            <label>Exam Date</label>
+            <input type="date" id="examDate" required>
+        </div>
+
+        <button type="submit">Add Exam</button>
+
+    </form>
+
+    <div id="examList"></div>
+
+</section>
+<section id="settings">
+    <h2>Settings</h2>
+
+    <div class="settings-card">
+        <h3>Appearance</h3>
+        <label>
+            <input type="checkbox" id="darkModeToggle">
+            Enable Dark Mode
+        </label>
+    </div>
+
+    <div class="settings-card">
+        <h3>App Name</h3>
+        <input type="text" id="appNameInput" placeholder="Enter app name">
+        <button id="saveAppName">Save App Name</button>
+    </div>
+
+    <div class="settings-card">
+        <h3>Backups</h3>
+        <p>Export or import your planner data using the backup buttons above.</p>
+    </div>
+</section>
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
