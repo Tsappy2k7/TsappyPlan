@@ -5,9 +5,11 @@ const FILES_TO_CACHE = [
     "./index.html",
     "./style.css",
     "./script.js",
-    "./manifest.json"
+    "./manifest.json",
+    "./icon-192.png",
+    "./icon-512.png",
+    "./tsappyplan-logo.png"
 ];
-
 // Install service worker
 self.addEventListener("install", event => {
     event.waitUntil(
