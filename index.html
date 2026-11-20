@@ -139,7 +139,7 @@
                         placeholder="Subject name"
                         required
                     >
-            
+            <label for="dayInput">Day of the Week</label>
                     <select id="dayInput" required>
                         <option value="Monday">Monday</option>
                         <option value="Tuesday">Tuesday</option>
@@ -149,9 +149,10 @@
                         <option value="Saturday">Saturday</option>
                         <option value="Sunday">Sunday</option>
                     </select>
-            
+            <label for="startTime">Start Time</label>
                     <input type="time" id="startTime" required>
-            
+
+             <label for="endTime">End Time</label>       
                     <input type="time" id="endTime" required>
             
                     <input
@@ -191,11 +192,13 @@
 
         <div class="time-field">
             <label>Due Date</label>
+            <label for="assignmentDate">Assignment Due Date</label>
             <input type="date" id="assignmentDate" required>
         </div>
 
         <div class="time-field">
             <label>Priority</label>
+            <label for="assignmentPriority">Assignment Priority</label>
             <select id="assignmentPriority">
                 <option value="Low">Low</option>
                 <option value="Medium" selected>Medium</option>
@@ -235,6 +238,7 @@
 
         <div class="time-field">
             <label>Exam Date</label>
+            <label for="examDate">Examination Date</label>
             <input type="date" id="examDate" required>
         </div>
 
