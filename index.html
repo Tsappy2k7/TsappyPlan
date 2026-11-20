@@ -278,5 +278,14 @@
     <p><a href="privacy.html" target="_blank">Privacy Policy</a></p>
     <p>© 2026 TsappyPlan. All rights reserved.</p>
 </footer>
+    <script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js")
+            .then(() => console.log("TsappyPlan service worker registered"))
+            .catch(error => console.error("Service worker registration failed:", error));
+    });
+}
+</script>
 </body>
 </html>
